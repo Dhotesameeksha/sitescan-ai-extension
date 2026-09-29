@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SiteScan AI</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <div class="logo">🔍</div>
+    <div>
+      <h1>SiteScan AI</h1>
+      <p id="site" class="site">Loading…</p>
+    </div>
+  </header>
+
+  <main>
+    <button id="scanBtn" class="primary">Scan this website</button>
+
+    <div id="progressWrap" class="progress hidden">
+      <div class="track"><div id="bar" class="fill"></div></div>
+      <p id="progressMsg">Starting…</p>
+    </div>
+
+    <div id="errorBox" class="error hidden"></div>
+    <div id="doneBox" class="done hidden"></div>
+
+    <label for="reqs">Client requirements <span class="hint">(one per line, optional)</span></label>
+    <textarea id="reqs" rows="5" placeholder="Payment with Razorpay&#10;User login and register&#10;Contact form&#10;Privacy policy&#10;Live chat"></textarea>
+
+    <details>
+      <summary>Claude AI report (optional)</summary>
+      <label class="check"><input type="checkbox" id="useAI"> Write a full AI report with Claude</label>
+      <label for="apiKey">Anthropic API key</label>
+      <input id="apiKey" type="password" placeholder="sk-ant-..." autocomplete="off">
+      <label for="model">Model</label>
+      <input id="model" type="text" placeholder="claude-sonnet-5">
+      <p class="note">The key is stored only in this browser (chrome.storage.local). When enabled, the scan results and a short page summary are sent to Anthropic's API. Use a key with a spend limit. Leave this off for a free, fully offline report.</p>
+    </details>
+
+    <button id="openLast" class="secondary hidden">Open last report</button>
+  </main>
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "SiteScan AI - Website Audit, Testing & Bug Finder",
+  "version": "1.0.0",
+  "description": "Scan any website: finds bugs, SEO, accessibility, performance and security problems, checks client requirements and creates an AI-style report with fixes.",
+  "permissions": ["activeTab", "scripting", "storage", "tabs"],
+  "host_permissions": ["<all_urls>"],
+  "background": { "service_worker": "background.js" },
+  "action": { "default_title": "SiteScan AI", "default_popup": "popup.html" },
+  "icons": { "16": "icons/icon16.png", "48": "icons/icon48.png", "128": "icons/icon128.png" },
+  "content_scripts": [
+    { "matches": ["<all_urls>"], "js": ["content/inject.js"], "run_at": "document_start", "world": "MAIN" },
+    { "matches": ["<all_urls>"], "js": ["content/collector.js"], "run_at": "document_start" }
+  ]
+}
